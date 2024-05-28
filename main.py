@@ -1,17 +1,32 @@
 from ContBancar.cont_bancar import ContBancar
+from Banca.banca import Banca
 
 if __name__ == '__main__':
-    cont_bancar = ContBancar(50, "Pop Robert", 50000)
-    #TESTARE obiecte din clasa ContBancar()
-    print(cont_bancar.depunere(-100))
-    print(cont_bancar.depunere(0))
-    print(cont_bancar.depunere(5000))
+    cont_bancar1 = ContBancar(50, "Pop Robert", 1000)
+    cont_bancar2 = ContBancar(51, "Maria Preda", 2000)
+    banca1 = Banca("BRD")
 
-    print(cont_bancar.retragere(10000000))
-    print(cont_bancar.retragere(0))
-    print(cont_bancar.retragere(-1000))
-    print(cont_bancar.retragere(10000))
+    banca1.adauga_cont(cont_bancar1)
+    banca1.adauga_cont(cont_bancar2)
 
-    print(cont_bancar.sold_disponibil())
+    banca1.afiseaza_conturi()
 
-    #Testare cu succes
+    cont_bancar1.depunere(100)
+
+    cont_bancar1.depunere(500)
+
+    cont_bancar2.depunere(400)
+
+    cont_bancar1.retragere(200)
+
+    cont_bancar2.retragere(1000)
+
+    print(cont_bancar1.sold_disponibil())
+
+    print(cont_bancar2.sold_disponibil())
+
+    banca1.efectueaza_transfer(50, 51, 50)
+
+    print(cont_bancar1.sold_disponibil())
+
+    print(cont_bancar2.sold_disponibil())
